@@ -99,14 +99,16 @@ syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match commandIncl '#\(check\|u\|a\|q\)' contained
-syn match commands '#\(check\|u\|a\|q\)'
+syn match commands '#\(check\|u\|a\|q\)' nextgroup=commandParam
 
 " Comments
-syn match comments '%.*$' contains=commentCommands
-syn keyword commentCommands contained where means
+syn match comments '%.*$' contains=commentCommands,propositions
+syn match commentCommands contained '\(where\|means\)' nextgroup=meanings
+syn match meanings ' .*$' contained
+syn match propositions contained ' [a-z] '
 
 " Regions
-syn region commandParam start=' \<' end='$' contains=commandIncl
+syn region commandParam start=' \<' end='$' contained contains=commandIncl
 syn region proofOn start='\<on\>' end='$' contains=stepId,basicLanguageKeywordsOn,comments keepend
 
 " Syntax Highlighting
@@ -117,6 +119,8 @@ hi def link comments Comment
 hi def link commentCommands Keyword
 hi def link commands PreProc
 hi def link commandParam Identifier
+hi def link meanings String
+hi def link propositions Constant
 
 " NUMBERING: Line numbers for proofs
 hi def link stepNumber Identifier
