@@ -26,9 +26,9 @@ syn match predicateLogicOperators '=='
 syn match predicateLogicOperators '!='
 
 " Transformational Proof Matching
-syn keyword transformationalProofCommands comm assoc contr lem 
-syn keyword transformationalProofCommands impl contrapos simp1 simp2 
-syn keyword transformationalProofCommands distr dm neg equiv 
+syn keyword transformationalProofCommands comm assoc contr lem
+syn keyword transformationalProofCommands impl contrapos simp1 simp2
+syn keyword transformationalProofCommands distr dm neg equiv
 syn keyword transformationalProofCommands idemp
 syn keyword transformationalProofCommands forall_over_and exists_over_or
 syn keyword transformationalProofCommands swap_vars move_exists move_forall
@@ -52,7 +52,7 @@ syn keyword setCommands set
 syn keyword setConstants empty univ
 syn keyword setFunctions in sube sub pow union inter
 syn keyword setFunctions card gen_U dom ran id iter
-syn match setOperators '|>' 
+syn match setOperators '|>'
 syn match setOperators '|->'
 syn match setOperators '<|'
 syn match setOperators '<-|'
@@ -99,11 +99,11 @@ syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
-syn match commands '^#\(check\|u\|a\|q\)\>'
-
-syn region commandParam start='^#\(check\|u\|a\|q\)\>' skip='#\(check\|u\|a\|q\)\>' end='$'
+syn match commandIncl '#\(check\|u\|a\|q\)' contained
+syn match commands '#\(check\|u\|a\|q\)'
 
 " Regions
+syn region commandParam start=' \<' end='$' contains=commandIncl
 syn region proofOn start='\<on\>' end='$' contains=stepId, basicLanguageKeywordsOn, comments keepend
 
 " Syntax Highlighting
