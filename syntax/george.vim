@@ -99,12 +99,11 @@ syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
-syn match commands '^#\(check\|u\|a\|q.*\)\>'
+syn match commands '^#\(check\|u\|a\|q\)\>'
+
+syn region commandParam start='^#\(check\|u\|a\|q\)\>' skip='#\(check\|u\|a\|q\)\>' end='$'
 
 " Regions
-syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
-syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
-
 syn region proofOn start='\<on\>' end='$' contains=stepId, basicLanguageKeywordsOn, comments keepend
 
 " Syntax Highlighting
