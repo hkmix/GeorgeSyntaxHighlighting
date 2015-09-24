@@ -98,19 +98,23 @@ syn match numericalConstants '\<\d\+\>'
 syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
-syn match comments '%.*$'
 syn match commandIncl '#\(check\|u\|a\|q\)' contained
 syn match commands '#\(check\|u\|a\|q\)'
 
+" Comments
+syn match comments '%.*$' contains=commentCommands
+syn keyword commentCommands contained where means
+
 " Regions
 syn region commandParam start=' \<' end='$' contains=commandIncl
-syn region proofOn start='\<on\>' end='$' contains=stepId, basicLanguageKeywordsOn, comments keepend
+syn region proofOn start='\<on\>' end='$' contains=stepId,basicLanguageKeywordsOn,comments keepend
 
 " Syntax Highlighting
 let b:current_syntax = "george"
 
 " META: Comments and George commands
 hi def link comments Comment
+hi def link commentCommands Keyword
 hi def link commands PreProc
 hi def link commandParam Identifier
 
