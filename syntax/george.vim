@@ -112,6 +112,7 @@ let b:current_syntax = "george"
 " META: Comments and George commands
 hi def link comments Comment
 hi def link commands PreProc
+hi def link commandParam Identifier
 
 " NUMBERING: Line numbers for proofs
 hi def link stepNumber Identifier
