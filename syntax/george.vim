@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: George
-" Maintainer: Jerry Jiang (tpcstld)
-" Latest Revision: 2014-11-09
+" Maintainer: Jack Zhou (hkmix)
+" Latest Revision: 2015-09-24
 
 if exists("b:current_syntax")
     finish
@@ -99,18 +99,16 @@ syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
-syn match commands '#.*$'
+syn match commands '#\(check\|u\|a\) .*$'
 
 " Regions
-
+syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
 syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
 
 syn region proofOn start='\<on\>' end='$' contains=stepId, basicLanguageKeywordsOn, comments keepend
 
 " Syntax Highlighting
-
 let b:current_syntax = "george"
-
 
 " META: Comments and George commands
 hi def link comments Comment
@@ -143,11 +141,11 @@ hi def link setConstants Constant
 hi def link zConstants Constant
 
 " OPERATORS: Special symbols like !, ==, and <==>
-"hi def link logicOperators Special
-"hi def link predicateLogicOperators Special
-"hi def link transformationalProofOperators Special
-"hi def link setOperators Special
-"hi def link zOperators Special
+hi def link logicOperators Special
+hi def link predicateLogicOperators Special
+hi def link transformationalProofOperators Special
+hi def link setOperators Special
+hi def link zOperators Special
 
 " Z: Special keywords for the Z specification
 hi def link zDeclarations Keyword
