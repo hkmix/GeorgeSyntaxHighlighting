@@ -99,7 +99,7 @@ syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
-syn match commands '#\(check\|u\|a\) .*$'
+syn match commands '^#\(check\|u\|a\|q.*\)\>'
 
 " Regions
 syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
